@@ -8,16 +8,59 @@ var Tamagotchi = {
   timePasses: function () {
     this.foodLevel = this.foodLevel - 1;
     this.playLevel = this.playLevel - 2;
-    this.sleepLevel = this.sleepLevel - 3;
+    this.sleepLevel = this.sleepLevel - 2;
   },
   isAlive: function () {
-    if (this.foodLevel === 0 || this.playLevel === 0 || this.sleepLevel === 0) {
+    if (this.foodLevel <= 0 || this.playLevel <= 0 || this.sleepLevel <= 0) {
       return false;
     } else {
       return true;
     }
+  },
+  foodUp: function() {
+    this.foodLevel = this.foodLevel + 1
+  },
+  playUp: function() {
+    this.playLevel = this.playLevel + 1
+  },
+  sleepUp: function() {
+    this.sleepLevel = this.sleepLevel + 1
   }
 }
 
+var tamagotchi;
 
-// var countdown = window.setInterval(myPet.timePasses(), 2000);
+
+$(document).ready(function() {
+  $("#start-button").click(function() {
+    $("#start-button").hide();
+    tamagotchi = Object.create(Tamagotchi);
+    tamagotchi.initialize(prompt("Name your Tamagotchi"));
+
+    var countdown = setInterval(function() {
+
+        tamagotchi.timePasses();
+        $("span#food-level").text(tamagotchi.foodLevel);
+        $("span#play-level").text(tamagotchi.playLevel);
+        $("span#sleep-level").text(tamagotchi.sleepLevel);
+        if (!tamagotchi.isAlive()) {
+          alert(tamagotchi.name + " is dead!");
+          clearInterval(countdown);
+          $("#start-button").show();}
+      }, 1000)
+    })
+  $("#food-button").click(function() {
+    tamagotchi.foodUp();
+    $("span#food-level").text(tamagotchi.foodLevel);
+  })
+  $("#play-button").click(function() {
+    tamagotchi.playUp();
+    $("span#play-level").text(tamagotchi.playLevel);
+  })
+  $("#sleep-button").click(function() {
+    tamagotchi.sleepUp();
+    $("span#sleep-level").text(tamagotchi.sleepLevel);
+  })
+  })
+
+

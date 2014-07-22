@@ -16,8 +16,8 @@ describe("Tamagotchi", function(){
       myPet.initialize("Fido");
       myPet.timePasses();
       myPet.foodLevel.should.equal(9);
-      myPet.playLevel.should.equal(8);
-      myPet.sleepLevel.should.equal(7);
+      myPet.playLevel.should.equal(8.5);
+      myPet.sleepLevel.should.equal(8);
     })
   })
 
