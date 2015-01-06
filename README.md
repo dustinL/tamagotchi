@@ -6,4 +6,5 @@
 ####Overview:
 Javascript & jQuery program, based on the 90s Tamagotchi handheld game. Keep your pet alive!
 
-Open index.html in your browser-of-choice to play.
+#####To play: 
+Download zip file and open index.html in your browser-of-choice.
